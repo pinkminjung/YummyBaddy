@@ -1,0 +1,53 @@
+﻿/* 오른쪽 퀵메뉴 */
+
+#wrap > .sub_quick_menu{
+	position:fixed;
+	top:30%;
+	right:20px;
+	z-index:2000;
+}
+#wrap .quick_btn{
+  display: block;
+  position:relative;
+  height: 40px;
+  width: 40px;
+  padding:7px;
+  margin:5px;
+  text-align:center;
+  color:#fff;
+  background: #47beab;
+  border-radius: 50px;
+  border:3px solid #fff;
+  line-height:20px;
+}
+
+#wrap .quick_btn .quick_btn_icon{
+	position:absolute;
+	display:block;
+	color:#fff;
+	top:10px;
+	left:11px;
+}
+
+.quick_tooltip {
+	position:relative;
+	width:100px;
+	height:30px;
+	top:-8px;
+	right:145px;
+	border-radius:4px;
+	border:2px solid #fff;
+	background:#2ebfd5;
+	line-height:30px;
+}
+
+.arrow_right {
+	position:absolute;
+	width: 0; 
+	height: 0;
+	top:7px;
+	left:100px;
+	border-top: 7px solid transparent;
+	border-bottom: 7px solid transparent;
+	border-left: 7px solid #fff;
+}

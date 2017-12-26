@@ -1,0 +1,278 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Yummy Baddy</title>
+	<meta name="description" content="" />
+	<meta name="author" content="do" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/header_common.css" />
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<link rel="stylesheet" href="css/cd_nav/css/style.css"> <!-- Resource style -->
+	<link rel="shortcut icon" href="favicon.ico" /><!--Favicon-->
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="css/cd_nav/js/modernizr.js"></script> <!-- Modernizr -->
+
+	<script>
+		$(document).ready(function() {
+			
+		// 태블릿이나 스마트폰일때 모바일 페이지로 이동
+		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ){ 
+		   window.location = "mobile/m_index.html";
+		}
+		
+		cloud ();  //  구름 흘러가는 효과
+
+		var cloudWidth = $(window).width();
+		var imgWidth = $('.cloud').width();
+
+		 setInterval(function() {
+			cloud ();
+		},15000);
+
+	// 구름 흘러가는 함수
+		function cloud () {
+			var cloudWidth = $(window).width();
+			var imgWidth = $('.cloud').width();
+			  $('.cloud').animate({
+				left : cloudWidth - imgWidth,
+				opacity : 0
+			 },15000,'easeInOutCubic',function() {
+			 	$('.cloud').css({
+			 		left:-1000,
+			 		opacity:1
+			 	});
+			 },15000);
+		}
+
+		setTimeout(function() {
+			$('#wrap').attr('id','wrap_02');
+			$('#main_visual').attr('id','main_visual_02');
+		},3000);
+
+		// Mouse cursor 뿅망치
+		$("#main_menu").css('cursor','url(images/mouse_hammer.png) -139 -155,auto');  //#main_menu에서 마우서커서를 뿅망치로 바꾸기
+		$(".menu_hole").css('cursor','url(images/mouse_hammer_02.png) -139 -155,auto');  //메뉴 hole에서 hand 마우스커서를 뿅망치로 바꾸기
+
+		// 메뉴 hole 마우스오버 애니메이션 효과
+		var hole_img_over = ['menu_nutri_over.png','menu_frog_over.png','menu_bass_over.png','menu_seastar_over.png','menu_blue_over.png'];
+		var i = $('.hole_img').index();
+			
+			$('.main_sub_menu').hide();
+			$('.menu_hole_li').each(function(i) {
+				$(this).hover(function() {	
+					console.log(i);
+					$(this).find('.hole_img').attr('src','images/' + hole_img_over[i]);
+					$(this).find('.main_sub_menu').fadeIn(1000).show();                                    // 서브메뉴 (story,recipe) 나타나는 효과
+				}, function() {
+					$(this).find('.hole_img').attr('src','images/menu_nomal.gif');
+					$('.main_sub_menu').fadeOut(500).hide();                                                // 서브메뉴 (story,recipe) 사라지는 효과
+				});
+				
+				// 서브메뉴 (story) 마우스오버했을때 이미지 바뀌는 효과
+				$('.sub_menu_story').hover(function() {
+					$(this).attr('src','images/btn_story_over.png');
+				}, function() {
+					$(this).attr('src','images/btn_story_nomal.png');
+				});
+				
+				// 서브메뉴 (recipe) 마우스오버했을때 이미지 바뀌는 효과
+				$('.sub_menu_recipe').hover(function() {
+					$(this).attr('src','images/btn_recipe_over.png');
+				}, function() {
+					$(this).attr('src','images/btn_recipe_nomal.png');
+				});
+			});
+			
+		// Navigation
+		$('.cd-nav li').on('click', function(event){
+			event.preventDefault();
+			var target = $(this),
+				//detect which section user has chosen
+				sectionTarget = target.data('menu');
+			if( !target.hasClass('cd-selected') ) {
+				//if user has selected a section different from the one alredy visible
+				//update the navigation -> assign the .cd-selected class to the selected item
+				target.addClass('cd-selected').siblings('.cd-selected').removeClass('cd-selected');
+				//load the new section
+				loadNewContent(sectionTarget);
+			} else {
+				// otherwise close navigation
+				toggleNav(false);
+			}
+		});
+		function loadNewContent(newSection) {
+			//create a new section element and insert it into the DOM
+			var section = $('<section class="cd-section '+newSection+'"></section>').appendTo($('main'));
+			//load the new content from the proper html file
+			section.load(newSection+'.html .cd-section > *', function(event){
+				//add the .cd-selected to the new section element -> it will cover the old one
+				section.addClass('cd-selected').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+					//close navigation
+					toggleNav(false);
+				});
+				section.prev('.cd-selected').removeClass('cd-selected');
+			});
+		 
+			$('main').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+				//once the navigation is closed, remove the old section from the DOM
+				section.prev('.cd-section').remove();
+			});
+		 
+			if( $('.no-csstransitions').length > 0 ) {
+				//detect if browser supports transitions
+				toggleNav(false);
+				section.prev('.cd-section').remove();
+			}
+		}
+			});
+	</script>
+</head>
+
+<body>
+	 <div id="wrap">	 
+		<main>
+			<header id="header">
+				<h1 id="logo"><a href="index.html"><img src="images/logo.png" alt="Yummy Baddy" /></a></h1>
+				<a href="#cd-nav" class="cd-nav-trigger">Menu<span><!-- used to create the menu icon --></span></a> <!-- .cd-nav-trigger -->
+			</header>
+			<div id="main_visual">
+				<!-- start : 메인메뉴 Hole-->
+				<div id="main_menu">
+					<ul>
+						<li class="menu_hole_li" ><a href="story_01.html" class="menu_hole menu_01"><img src="images/menu_nomal.gif" class="hole_img menu_img_01" alt="뉴트리아" title="뉴트리아" /></a>
+							<div class="main_sub_menu sub_01">
+								<ul class="hidden">
+									<li><a href="story_01.html"><img src="images/btn_story_nomal.png" class="sub_menu_story" alt="뉴트리아" /></a></li>
+									<li><a href="story_01.html?#recipe"><img src="images/btn_recipe_nomal.png" class="sub_menu_recipe" alt="레시피" /></a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="menu_hole_li" ><a href="story_02.html" class="menu_hole menu_02"><img src="images/menu_nomal.gif" class="hole_img menu_img_02" alt="황소개구리" title="황소개구리" /></a>
+							<div class="main_sub_menu sub_02">
+								<ul class="hidden">
+									<li><a href="story_02.html"><img src="images/btn_story_nomal.png" class="sub_menu_story" alt="황소개구리" /></a></li>
+									<li><a href="story_02.html?#recipe"><img src="images/btn_recipe_nomal.png" class="sub_menu_recipe" alt="레시피" /></a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="menu_hole_li" ><a href="story_03.html" class="menu_hole menu_03"><img src="images/menu_nomal.gif" class="hole_img menu_img_03" alt="배스" title="배스" /></a>
+							<div class="main_sub_menu sub_03">
+								<ul class="hidden">
+									<li><a href="story_03.html"><img src="images/btn_story_nomal.png" class="sub_menu_story" alt="배스" /></a></li>
+									<li><a href="story_03.html?#recipe"><img src="images/btn_recipe_nomal.png" class="sub_menu_recipe" alt="레시피" /></a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="menu_hole_li" ><a href="story_04.html" class="menu_hole menu_04"><img src="images/menu_nomal.gif" class="hole_img menu_img_04" alt="불가사리" title="불가사리" /></a>
+							<div class="main_sub_menu sub_04">
+								<ul class="hidden">
+									<li><a href="story_04.html"><img src="images/btn_story_nomal.png" class="sub_menu_story" alt="불가사리" /></a></li>
+									<li><a href="story_04.html?#recipe"><img src="images/btn_recipe_nomal.png" class="sub_menu_recipe" alt="레시피" /></a></li>
+								</ul>
+							</div>
+						</li>
+						<li class="menu_hole_li" ><a href="story_05.html" class="menu_hole menu_05"><img src="images/menu_nomal.gif" class="hole_img menu_img_05" alt="블루길" title="블루길" /></a>
+							<div class="main_sub_menu sub_05">
+								<ul class="hidden">
+									<li><a href="story_05.html"><img src="images/btn_story_nomal.png" class="sub_menu_story" alt="블루길" /></a></li>
+									<li><a href="story_05.html?#recipe"><img src="images/btn_recipe_nomal.png" class="sub_menu_recipe" alt="레시피" /></a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>					
+				</div>
+				<!-- End : 메인메뉴 Hole-->	
+			</div> 
+			<div class="cloud"><img src="images/cloud_02.png" alt="cloud" /></div>
+		</main>
+	</div>
+
+	<!-- Start : cd_nav -->
+	<nav class="cd-nav-container" id="cd-nav">
+		<header>
+			<h3>Yummy Baddy</h3>
+			<a href="#" class="cd-close-nav">Close</a>
+		</header>
+	
+		<ul class="cd-nav">
+			<li data-menu="index">
+				<a href="index.html">
+					<span>
+						<img src="images/cd_nav_icon_01.png" alt="Home" />
+					</span>
+	
+					<em>Home</em>
+				</a>
+			</li>
+			
+			<li data-menu="yavengers">
+				<a href="yavengers.html">
+					<span>
+						<img src="images/cd_nav_icon_02.png" alt="Yavengers" />
+					</span>
+					<em>Yavengers</em>
+				</a>
+			</li>
+	
+			<li data-menu="story_01">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_03.png" alt="Nutria" />
+					</span>
+	
+					<em>Nutria</em>
+				</a>
+			</li>
+	
+			<li data-menu="story_02">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_04.png" alt="Bullfrog" />
+					</span>
+					<em>Bullfrog</em>
+				</a>
+			</li>
+	
+			<li data-menu="story_03">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_05.png" alt="Largemouse Bass" />
+					</span>
+					<em>Largemouse Bass</em>
+				</a>
+			</li>
+			<li data-menu="story_04">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_06.png" alt="North Pacific Seastar" />
+					</span>
+					<em>North Pacific Seastar</em>
+				</a>
+			</li>
+			
+			<li data-menu="story_05">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_07.png" alt="Blue Gill" />
+					</span>
+					<em>Blue Gill</em>
+				</a>
+			</li>
+			
+			<li data-menu="solution">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_08.png" alt="Solution" />
+					</span>
+					<em>Solution</em>
+				</a>
+			</li>
+		</ul>
+	</nav>
+	<script src="css/cd_nav/js/main.js"></script> <!-- Resource jQuery -->
+	<!-- End : cd_nav -->
+</body>
+</html>

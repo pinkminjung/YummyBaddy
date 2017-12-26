@@ -1,0 +1,516 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <title>Yummy Baddy</title>
+  <meta name="description" content="" />
+  <meta name="author" content="do" />
+  <link rel="stylesheet" type="text/css" href="css/reset.css" />
+  <link rel="stylesheet" type="text/css" href="css/header_common.css" />
+  <link rel="stylesheet" type="text/css" href="css/story_04.css" />
+	<link rel="stylesheet" type="text/css" href="css/quick.css" />
+	<link rel="stylesheet" href="css/cd_nav/css/style.css"> <!-- Resource style -->
+	 <link rel="shortcut icon" href="favicon.ico"><!-- Favicon -->
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	
+		<!-- Graph -->
+		<script src="js/chart/amcharts.js"></script>
+		<script src="js/chart/serial.js"></script>
+		<script src="js/chart/themes/light.js"></script>
+		<script src="js/chart/chart_seastar.js"></script>
+		<script src="css/cd_nav/js/modernizr.js"></script> <!-- Modernizr -->
+
+		<!-- Skrollr -->
+		<script src="js/skrollr.min.js"></script>
+		
+		<script>
+			var oldIndex=-1;
+
+			$(document).ready(function() {
+				scrollHeightEvent();     // 리사이즈 이벤트
+				
+				// 퀵메뉴 슬라이드 효과
+				var sectionSlide;
+					var sIndex=$('.sub_quick_btn_icon').index();			
+					var sHeight = $(window).height;                    //window의 높이값을 sHeight 변수에 설정 
+					var sectionSlide = (sIndex) * (sHeight);        
+				$('.sub_quick_btn_icon').click(function() {
+					
+					// top : 인덱스 값 * window.height값
+						$('.sub_quick_btn_icon').click(function() {
+							// section페이지가 애니메이트 되게 링크 설정하기
+							$('.scrollblock').animate({
+								top: sectionSlide
+							},1000);
+						});
+				})		
+				
+				// 리사이즈 이벤트
+				$(window).resize(function() {
+					scrollHeightEvent(); 
+				});
+				
+				// Height 리사이즈 함수
+				function scrollHeightEvent(){
+					var scrollHeight;
+					$(window).resize(function() {
+						scrollHeight = $(window).height();
+						$('.scrollblock*').css({
+							height : scrollHeight
+						});
+					});
+				};
+				
+				// 버튼 초기값 설정
+				$('.quick_btn:eq(0)').css('background', '#0072bc');
+				
+				$('#quick_btn*').on('click',function (e) {
+					e.preventDefault();
+
+					var target = $(this).attr('href');
+					var $target = $(target);
+
+					$('html, body').stop().animate({
+						'scrollTop': $target.offset().top
+					}, 900, 'swing', function () {
+						window.location.hash = target;
+					});
+
+					// 보트 움직이기
+					if (target=="#inflow") {
+						moveBoat();
+					}
+				});
+
+				// Tooltip
+				$('.sub_quick_tooltip').hide();
+				$('.quick_btn').hover(function() {
+						$(this).find('.sub_quick_tooltip').stop().show().animate({
+							right:100,
+							height:43
+						});
+					}, function() {
+						$(this).find('.sub_quick_tooltip').stop().hide().animate({
+							right:120,
+							height:45
+						});
+					}
+				);
+				
+				// Skrollr
+				var s = skrollr.init({
+					render: function(data) {
+					  //Log the current scroll position.
+					  $('#info').text(data.curTop);
+					}
+				});
+			
+			$(window).scroll(function() {
+				
+				// 레시피 텍스트 나타나고 칼 사라지는 효과 
+				if ($(window).scrollTop() > $(window).height() * 6) {	
+					$('.recipe_card').delay(2000).show('blind',1000);
+					$('.knife').fadeOut(2000).delay(1000);
+				};
+
+				var index = parseInt($(window).scrollTop() / $(window).height());
+				if (index!=oldIndex) {
+					if (index==1) moveBoat();	// index 바뀌면 ..........................
+
+					oldIndex = index;
+				}
+			});
+
+			$( window ).resize(function() {
+				$( "#log" ).append( "<div>Handler for .resize() called.</div>" );
+			});
+		});
+
+			
+			// 보트 움직이기
+			function moveBoat() {
+				if ($('.boat_img').css("top")!='150px') $('.boat_img').delay(500).css("top", "150px");
+
+				var yPos = $('#inflow').height() - $('.boat_img').height();
+				console.log($('#inflow').height() + "/" + $('.boat_img').height()+'/'+yPos);
+				$('.boat_img').delay(500).animate({
+					top:yPos - 150
+				},2000);
+			}
+		 
+			 // 레시피 섹션 스크롤 아이콘 : Plating 섹션으로 애니메이션
+			 $(function () {
+				 $('#scroll_icon').click(function () {
+					 $('html, body').animate({
+							 scrollTop: $(document).height()
+					 },1500);
+				 });
+			 });
+		</script>
+</head>
+
+<body>
+	<div id="wrap">
+		<header id="header">
+			<h1 id="logo"><a href="index.html"><img src="images/logo.png" alt="Yummy Baddy" /></a></h1>
+			<a href="#cd-nav" class="cd-nav-trigger">Menu<span><!-- used to create the menu icon --></span></a> <!-- .cd-nav-trigger -->
+		</header>
+		<!-- Start : sub01 동물소개-->
+		<section class="scrollblock" id="introduce">
+			<h1 class="skip">sub01</h1>
+			<div class="scrollblock_container">
+			<!--div id="info">0</div><!-- 상단 스크롤포지션 값 -->
+				<!-- Start : Baddy 스크롤 설정-->
+					<section id="slide-1">
+					  <div class="bcg"></div>
+					  <div id="scrollBaby"
+					    data-top="transform:translateY(0px)"
+					    data--875-top="transform:translateY(300px)"
+					    data-anchor-target="#slide-1"
+					  ></div>
+					  
+					  <div id="baddy">
+						 <div class="item introduce"
+					    data-top="transform:translateY(0px)"
+					    data--575-top="transform:translateY(800px)"
+					    data-anchor-target="#slide-1"
+					  ><img src="images/seastar_01.png" alt="Seastar" /></div>
+
+						<!-- Start : damage -->
+						<div class="item damage"
+							  data-top="opacity: 0; transform: scale(1);" 
+							  data--1450-top="opacity: 0 ;"
+							  data--1700-top="opacity: 1; transform: scale(1);"
+							  data--2100-top="opacity: 1; transform: scale(1); bottom:150px;"
+							  data--2500-top="opacity: 1; transform: scale(1);" 
+							  data--2800-top="opacity: 0; transform: scale(1);" 
+							  data-anchor-target="#slide-1"
+						    ><img src="images/seastar_02.png" alt="Seastar" />
+					    </div>
+					    <!-- End : damage -->
+					    
+					    <!-- Start : proud -->
+					    <div class="item proud"
+					      data-top="opacity: 0; transform: scale(0.6);" 
+					      data--3600-top="opacity: 0; transform: scale(1);"
+								data--3800-top="opacity: 1; transform: scale(1);" 
+								data--4300-top="opacity: 1; transform: scale(1); bottom:200px;"
+								data--4800-top="opacity: 1; transform: scale(1);"
+								data--4900-top="opacity: 0; transform: scale(1);"
+					      data-anchor-target="#slide-1"
+					    ><img src="images/seastar_03.png" alt="Seastar" />
+					    </div>
+					    <!-- End : proud >
+					
+					     <!-- Start : 죄수모자-->
+					    <div class="item hat"
+					      data-top="opacity: 0; transform: scale(0.8);" 
+					      data--4600-top="opacity: 0; transform: scale(0.8);"
+								data--4650-top="opacity: 1; transform: translateY(0); scale(0.8);"
+								data--4700-top="opacity: 1; transform:translateY(-250px); top:-220px; scale(0.8);"
+								data--5300-top="opacity: 1; transform: scale(0.8);"
+								data--5600-top="opacity: 1; transform: scale(0.8);"
+								data--5750-top="opacity: 1; transform: scale(0.6);"
+								data--5800-top="opacity: 0; transform: scale(0);"
+					      data-anchor-target="#slide-1"
+					    ><img src="images/prisoner_hat.png" alt="죄수모자" />
+					    </div>
+					    <!-- End : 죄수모자 -->
+					    
+					    <!-- Start : punish -->
+					     <div class="item punish"
+							data-top="opacity: 0; transform: scale(1);" 
+							  data--4700-top="opacity: 0 ;"
+							  data--4900-top="opacity: 1; transform: scale(1);"
+							  data--5300-top="opacity: 1; transform: scale(1);bottom:160px;"
+							  data--5700-top="opacity: 1; transform: scale(1);" 
+							  data--5800-top="opacity: 0; transform: scale(1);" 
+							  data-anchor-target="#slide-1"
+						    ><img src="images/seastar_04.png" alt="Seastar" />
+					    </div>
+					    <!-- End : punish -->
+					    
+					     <!-- Start : recipe -->
+					    <div class="item baddyrecipe"
+					      data-top="opacity: 0; transform: scale(0.6);" 
+					      data--5700-top="opacity: 0; transform: scale(1);"
+								data--6000-top="opacity: 1; transform: scale(1); bottom:40px;"
+								data--6600-top="opacity: 1; transform: scale(1);"
+								data--6700-top="opacity: 0; transform: scale(0);"
+					      data-anchor-target="#slide-1"
+					    ><img src="images/seastar_05.png" alt="Seastar" />
+					    </div>
+					    <!-- End : recipe -->
+					  </div>
+					</section>
+				<!-- End : Baddy 스크롤 설정-->
+			</div>
+		</section>
+		<!-- End : sub01 동물소개-->
+		
+		<!-- Start : sub02 유입경로-->
+		<section class="scrollblock" id="inflow">
+			<h1 class="skip">sub02</h1>
+			<div class="scrollblock_container">
+				<div class="inflow_land">
+					<div id="txt1" class="txt">
+						러시아와 한국의 바닷길이 열리던 날,<br />
+						바다의 해적, 아무르불가사리가 인간들의 선박을 타고, 조류를 타고<br />
+						러시아 해변에서 대한민국 해변으로 건너오기 시작했어요.
+					</div>
+					<div class="inflow_foreign"><img src="images/img_russia.png" alt="SouthAmerica" class="foreign_img" /></div>
+					<div class="inflow_boat"><img src="images/inflow_boat_seastar.png" alt="boat" class="boat_img"/></div>
+                   
+					<!--div class="inflow_korea"><img src="images/inflow_korea.png" alt="korea" class="korea_img"/></div-->
+				</div>
+			</div>
+		</section>
+		<!-- End : sub02 유입경로-->
+		
+		<!-- Start : sub03 피해상황-->
+		<section class="scrollblock" id="damage">
+			<h1 class="skip">sub03</h1>
+			<div class="scrollblock_container">
+				<div id="txt2" class="txt">
+					대한민국의 남쪽 해변.<br />
+					크고 작은 조개 그리고 물고기들이 한가롭게<br />
+					시원한 파도를 즐기며 사이좋게 살아가고 있었지만.<br />
+					<br />
+
+					그 때부터였어요...<br />
+					우리 모두의 삶이 송두리째 흔들리기 시작한 것이..<br /> 
+
+					아무르불가사리는 야생이든 양식장이든 가리지 않고<br />
+					엄청난 수의 해적 군단을 거느리고 침범해<br />
+					가족, 동료들을 모두 먹어 해치우기 시작했어요.<br />
+				</div>                                       
+				<div class="wave">
+					<div class="shellfish" data-top="opacity: 1; transform: scale(1);" data--1700-top="opacity: 1; transform: scale(1);" data--1800-top="opacity: 1; transform: scale(0);"  data-anchor-target="#slide-1"><img src="images/img_damage_shellfish.png" alt="shell" /></div>
+					<div class="shellfish" data-top="opacity: 1; transform: scale(1);" data--1800-top="opacity: 1; transform: scale(1);" data--1900-top="opacity: 1; transform: scale(0);"  data-anchor-target="#slide-1"><img src="images/img_damage_shellfish.png" alt="shell" /></div>
+					<div class="shellfish" data-top="opacity: 1; transform: scale(1);" data--1900-top="opacity: 1; transform: scale(1);" data--2000-top="opacity: 1; transform: scale(0);"  data-anchor-target="#slide-1"><img src="images/img_damage_shellfish.png" alt="shell" /></div>
+					<div class="shellfish" data-top="opacity: 1; transform: scale(1);" data--2000-top="opacity: 1; transform: scale(1);" data--2100-top="opacity: 1; transform: scale(0);"  data-anchor-target="#slide-1"><img src="images/img_damage_shellfish.png" alt="shell" /></div>
+					<div class="shellfish" data-top="opacity: 1; transform: scale(1);" data--2200-top="opacity: 1; transform: scale(1);" data--2400-top="opacity: 1; transform: scale(0);"  data-anchor-target="#slide-1"><img src="images/img_damage_shellfish.png" alt="shell" /></div>
+					<div class="shellfish" data-top="opacity: 1; transform: scale(1);" data--2450-top="opacity: 1; transform: scale(1);" data--2550-top="opacity: 1; transform: scale(0);"  data-anchor-target="#slide-1"><img src="images/img_damage_shellfish.png" alt="shell" /></div>
+				</div>
+			</div>
+		</section>
+		<!-- End : sub03 피해상황-->
+		
+		<!-- Start : sub04 그래프-->
+		<section class="scrollblock" id="graph">
+			<h1 class="skip">sub04</h1>
+			<div class="scrollblock_container">
+				<div class="connect_wave"><img src="images/connect_wave.png" alt="파도" /></div>
+				<div class="chart_title">조개 서식지 변화 그래프</div>
+				<div id="chartdiv"></div>
+			</div>
+		</section>
+		<!-- End : sub04 그래프-->
+		
+		<!-- Start : sub05 의기양양-->
+		<section class="scrollblock" id="proud">
+			<h1 class="skip">sub05</h1>
+			<div class="scrollblock_container">     	 
+				<div class="connect_block"><img src="images/connect_block.png" alt="블럭" /></div>
+				<div class="proud_ruler">
+				
+					<div class="baddy_desc">
+						<table class="baddy_desc_table">
+							<tr>
+								<td colspan="2" class="title">아무르불가사리</td>
+							</tr>
+							<tr>
+								<td><span class="subject">학명</span></td>
+								<td>Asterias amurens</td>
+							</tr>
+							<tr>
+								<td><span class="subject">생물학적 분류</span></td>
+								<td>극피동물 / 불가사리류 / 차극목 / 불가사리과 </td>
+							</tr>
+							<tr>
+								<td><span class="subject">크기</span></td>
+								<td>지름 약 30cm, 팔의 길이는 9cm 내외</td>
+							</tr>
+							<tr>
+								<td><span class="subject">몸의 빛깔</span></td>
+								<td>등쪽-짙은 푸른색, 배면-노란색 광택</td>
+							</tr>
+							<tr>
+								<td><span class="subject">서식장소</span></td>
+								<td>수심 100m의 연안 얕은 모래바닥</td>
+							</tr>
+							<tr>
+								<td><span class="subject">분포지역</span></td>
+								<td>사할린의 동해안, 홋카이도 등지</td>
+							</tr>
+						</table>
+					</div>
+				
+				</div>
+			</div>
+		</section>
+		<!-- End : sub05 의기양양-->
+		
+		<!-- Start : sub06 형벌-->
+		<section class="scrollblock" id="punish">
+			<h1 class="skip">sub06</h1>
+			<div class="scrollblock_container">
+				<div id="txt3" class="txt">
+					야벤저스의 캡틴, 나팔  고둥은 발벗고 나서<br />
+					아무르 불가사리 퇴치에 나섰고<br />
+					피해가 막심한 인간들도 아무르불가사리를 잡아들여<br />
+					육장에 처하기로 결정합니다.
+				</div>
+				<div class="punish_ruler"></div>
+			</div>
+		</section>
+		<!-- End : sub06 형벌-->
+	
+		<!-- Start : sub07 Recipe -->
+		<section class="scrollblock" id="recipe">
+			<h1 class="skip">Kitchen</h1>
+			<div class="scrollblock_container">
+				<div class="kitchen_knife">
+					<img src="images/img_kitchen_knife.png" alt="knife" class="knife" />
+ 					<div class="recipe_card">
+						<table width="90%" cellpadding="0" cellspacing="0" border="0" class="recipe_table">
+							<tr>
+								<td width="20%" class="recipe_list_title"><img src="images/recipe_dot_img.png" alt="재료" /> 재료</td>
+								<td>불가사리,소금물,차가운 물,핫 소스</td>
+							</tr>
+							<tr>
+								<td width="20%" class="recipe_list_title"><img src="images/recipe_dot_img.png" alt="조리시간" /> 주의</td>
+								<td>독성이 있는 불가사리가 있을 수 있으니 요리가 가능한 불가사리로만 조리한다.</td>
+							</tr>
+							<tr>
+								<td width="20%"  class="recipe_list_title" valign="top"><img src="images/recipe_dot_img.png" alt="요리순서" /> 요리순서</td>
+								<td>
+									1. 소금물을 끓인다.<br/ >
+									2. 끓는 물에 불가사리를 5~8분 삶는다.<br />
+									3. 불가사리를 식힌다.<br />
+									4. 식힌 불가사리를 겉면을 제거한다.<br />
+									5. 핫 소스나 좋아하는 소스에 곁들여먹는다.
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="scroll_icon"><a id="scroll_icon" href="#plating"><img src="images/ready.gif"></a></div>
+			</div>
+		</section>
+		<!-- End : sub07 Recipe -->
+		
+		<!-- Start : sub08 Plating -->
+		<section class="scrollblock" id="plating">
+			<h1 class="skip">Plating</h1>
+			<div class="scrollblock_container">
+				<div class="recipe_plating">
+					<img src="images/img_plating_seastar.png" class="plating" alt="plating" />
+					<img src="images/txt_enjoy.png" class="enjoy" alt="enjoy yummybaddy" />
+				</div>
+			</div>
+		</section>
+		<!-- End : sub08 Plating-->
+		
+		<!-- Start : 우측 바로가기 메뉴들-->
+		<div class="sub_quick_menu">
+			 <ul>
+				<li class="quick_btn"><div class="sub_quick_tooltip"><span class="sub_quick_tooltip_title">동물소개</span></div><a class="first" id="quick_btn" title="동물소개" href="#introduce"><img src="images/quick_btn_icon_01.png" class="quick_btn_icon " /></a></li>
+				<li class="quick_btn"><div class="sub_quick_tooltip"><span class="sub_quick_tooltip_title">유입경로</span></div><a class="second" id="quick_btn" title="유입경로" href="#inflow"><img src="images/quick_btn_icon_02.png" class="quick_btn_icon " /></a></li>
+				<li class="quick_btn"><div class="sub_quick_tooltip"><span class="sub_quick_tooltip_title">피해상황</span></div><a class="third" id="quick_btn" title="피해상황" href="#damage"><img src="images/quick_btn_icon_03.png" class="quick_btn_icon " /></a></li>
+				<li class="quick_btn"><div class="sub_quick_tooltip"><span class="sub_quick_tooltip_title">피해 그래프</span></div><a class="fourth" id="quick_btn" title="피해 그래프" href="#graph"><img src="images/quick_btn_icon_04.png" class="quick_btn_icon " /></a></li>
+				<!--li class="quick_btn"><div class="sub_quick_tooltip"><span class="sub_quick_tooltip_title">의기양양</span></div><a class="fifth" id="quick_btn" title="의기양양" href="#proud"><img src="images/quick_btn_icon_05.png" class="quick_btn_icon " /></a></li-->
+				<li class="quick_btn"><div class="sub_quick_tooltip"><span class="sub_quick_tooltip_title">형벌</span></div><a class="sixth" id="quick_btn" title="형벌" href="#punish"><img src="images/quick_btn_icon_06.png" class="quick_btn_icon " /></a></li>
+				<li class="quick_btn"><div class="sub_quick_tooltip"><span class="sub_quick_tooltip_title">레시피</span></div><a class="seventh" id="quick_btn" title="레시피" href="#recipe"><img src="images/quick_btn_icon_07.png" class="quick_btn_icon " /></a></li>
+			</ul>
+		</div>
+		<!-- End : 우측 바로가기 메뉴들-->
+	</div>
+	
+	<!-- Start : cd_nav -->
+	<nav class="cd-nav-container" id="cd-nav">
+		<header>
+			<h3>Yummy Baddy</h3>
+			<a href="#" class="cd-close-nav">Close</a>
+		</header>
+	
+		<ul class="cd-nav">
+			<li data-menu="index">
+				<a href="index.html">
+					<span>
+						<img src="images/cd_nav_icon_01.png" alt="Home" />
+					</span>
+	
+					<em>Home</em>
+				</a>
+			</li>
+			
+			<li data-menu="yavengers">
+				<a href="yavengers.html">
+					<span>
+						<img src="images/cd_nav_icon_02.png" alt="Yavengers" />
+					</span>
+					<em>Yavengers</em>
+				</a>
+			</li>
+	
+			<li data-menu="story_01">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_03.png" alt="Nutria" />
+					</span>
+	
+					<em>Nutria</em>
+				</a>
+			</li>
+	
+			<li data-menu="story_02">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_04.png" alt="Bullfrog" />
+					</span>
+					<em>Bullfrog</em>
+				</a>
+			</li>
+	
+			<li data-menu="story_03">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_05.png" alt="Largemouse Bass" />
+					</span>
+					<em>Largemouse Bass</em>
+				</a>
+			</li>
+			<li data-menu="story_04">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_06.png" alt="North Pacific Seastar" />
+					</span>
+					<em>North Pacific Seastar</em>
+				</a>
+			</li>
+			
+			<li data-menu="story_05">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_07.png" alt="Blue Gill" />
+					</span>
+					<em>Blue Gill</em>
+				</a>
+			</li>
+			
+			<li data-menu="solution">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_08.png" alt="Solution" />
+					</span>
+					<em>Solution</em>
+				</a>
+			</li>
+		</ul>
+	</nav>
+	<script src="css/cd_nav/js/main.js"></script> <!-- Resource jQuery -->
+	<!-- End : cd_nav -->
+	</body>
+</html>

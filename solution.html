@@ -1,0 +1,178 @@
+﻿
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Yummy Baddy</title>
+<link type="text/css" rel="stylesheet" href="css/reset.css"/>
+<link type="text/css" rel="stylesheet" href="css/header_common.css"/>
+<link rel="stylesheet" href="css/cd_nav/css/style.css"> <!-- Resource style -->
+<link type="text/css" rel="stylesheet" href="css/solution.css"/>
+
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="css/cd_nav/js/modernizr.js"></script> <!-- Modernizr -->
+<script>
+	$(document).ready(function() {
+		
+	// Navigation
+		$('.cd-nav li').on('click', function(event){
+			event.preventDefault();
+			var target = $(this),
+				//detect which section user has chosen
+				sectionTarget = target.data('menu');
+			if( !target.hasClass('cd-selected') ) {
+				//if user has selected a section different from the one alredy visible
+				//update the navigation -> assign the .cd-selected class to the selected item
+				target.addClass('cd-selected').siblings('.cd-selected').removeClass('cd-selected');
+				//load the new section
+				loadNewContent(sectionTarget);
+			} else {
+				// otherwise close navigation
+				toggleNav(false);
+			}
+		});
+		function loadNewContent(newSection) {
+			//create a new section element and insert it into the DOM
+			var section = $('<section class="cd-section '+newSection+'"></section>').appendTo($('main'));
+			//load the new content from the proper html file
+			section.load(newSection+'.html .cd-section > *', function(event){
+				//add the .cd-selected to the new section element -> it will cover the old one
+				section.addClass('cd-selected').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+					//close navigation
+					toggleNav(false);
+				});
+				section.prev('.cd-selected').removeClass('cd-selected');
+			});
+		 
+			$('main').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+				//once the navigation is closed, remove the old section from the DOM
+				section.prev('.cd-section').remove();
+			});
+		 
+			if( $('.no-csstransitions').length > 0 ) {
+				//detect if browser supports transitions
+				toggleNav(false);
+				section.prev('.cd-section').remove();
+			}
+		}
+			});
+</script>
+</head>
+
+<body>
+
+<div id="wrap">	 
+	<header id="header">
+			<h1 id="logo"><a href="index.html"><img src="images/logo.png" alt="Yummy Baddy" /></a></h1>
+			<a href="#cd-nav" class="cd-nav-trigger">Menu<span><!-- used to create the menu icon --></span></a> <!-- .cd-nav-trigger -->
+	</header>
+	<h2 id="yavengers"><img src="images/solution_title.png" alt="대책"/></h2>
+	<div id="content">
+		<img id="slogan" src="images/txt_sol_slogan.png" alt="slogan"/>
+		<img id="yavengers_cha" src="images/img_sol_character.png" alt="yavengers"/>
+		 <span>
+			다양한 외래종의 무차별한 번식과 방생으로 우리나라<br/>
+			생태계는 많이 힘들어하고 있습니다.<br/>
+			생물다양성 보전 및 이용에 관한 법률 제5조에 의하면 <br/>
+			모든 국민은 생물다양성의 보전 및 지속가능한 이용을 위하여 <br/>
+			국가와 지방자치단체가 수립.시행하는 사업이 <br/>
+			원활하게 추진될 수 있도록 적극 협조하여야 합니다.<br/>
+			<br/>
+			생물다양성 보전 및 이용에 관한 법률 제23조에서 보면 <br/>
+			생태계교란 생물은 수입.반입.사육.재배.방사.<br/>
+			이식.양도.양수.보관.운반.또는 유통 하여서는 안됩니다.<br/>
+			개인 기호나 취미를 위해 위 사항을 위반할 경우 2년 이하의 징역 <br/>
+			또는 2천만원 이하의 벌금에 처한다(재35조_벌칙)라는 <br/>
+			규정이 있음을 알고 되도록 이런한 행위가 자제되기를 바랍니다.<br/>
+		</span>
+	</div>
+</div>
+
+<!-- Start : cd_nav -->
+	<nav class="cd-nav-container" id="cd-nav">
+		<header>
+			<h3>Yummy Baddy</h3>
+			<a href="#" class="cd-close-nav">Close</a>
+		</header>
+	
+		<ul class="cd-nav">
+			<li data-menu="index">
+				<a href="index.html">
+					<span>
+						<img src="images/cd_nav_icon_01.png" alt="Home" />
+					</span>
+	
+					<em>Home</em>
+				</a>
+			</li>
+			
+			<li data-menu="yavengers">
+				<a href="yavengers.html">
+					<span>
+						<img src="images/cd_nav_icon_02.png" alt="Yavengers" />
+					</span>
+					<em>Yavengers</em>
+				</a>
+			</li>
+	
+			<li data-menu="story_01">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_03.png" alt="Nutria" />
+					</span>
+	
+					<em>Nutria</em>
+				</a>
+			</li>
+	
+			<li data-menu="story_02">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_04.png" alt="Bullfrog" />
+					</span>
+					<em>Bullfrog</em>
+				</a>
+			</li>
+	
+			<li data-menu="story_03">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_05.png" alt="Largemouse Bass" />
+					</span>
+					<em>Largemouse Bass</em>
+				</a>
+			</li>
+			<li data-menu="story_04">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_06.png" alt="North Pacific Seastar" />
+					</span>
+					<em>North Pacific Seastar</em>
+				</a>
+			</li>
+			
+			<li data-menu="story_05">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_07.png" alt="Blue Gill" />
+					</span>
+					<em>Blue Gill</em>
+				</a>
+			</li>
+			
+			<li data-menu="solution">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_08.png" alt="Solution" />
+					</span>
+					<em>Solution</em>
+				</a>
+			</li>
+		</ul>
+	</nav>
+	<script src="css/cd_nav/js/main.js"></script> <!-- Resource jQuery -->
+	<!-- End : cd_nav -->
+
+</body>
+</html>

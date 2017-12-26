@@ -1,0 +1,53 @@
+﻿/* 오른쪽 퀵메뉴 */
+
+#wrap > .sub_quick_menu{
+	position:fixed;
+	top:30%;
+	right:20px;
+	z-index:2000;
+}
+#wrap .quick_btn{
+  display: block;
+  position:relative;
+  height: 40px;
+  width: 40px;
+  padding:7px;
+  margin:5px;
+  text-align:center;
+  color:#fff;
+  background: #47beab;
+  border-radius: 50px;
+  -moz-border-radius: 50px;
+  -o-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -ms-border-radius: 50px;
+  border:3px solid #fff;
+  line-height:20px;
+}
+
+#wrap .quick_btn.quick_btn_icon{
+	position:absolute;
+	display:block;
+	color:#fff;
+	top:10px;
+	left:11px;
+}
+
+.sub_quick_tooltip {
+	position:relative;
+	width:83px;
+	height:43px;
+	top:-30px;
+	right:100px;
+	line-height:43px;
+	border:none;
+	text-align:center;
+	background:url(../images/sub_menunu02.png) no-repeat;
+}
+
+.sub_quick_tooltip_title {
+	position:relative;
+	right:7px;
+	font-size:0.9em;
+	color:#fff;
+}

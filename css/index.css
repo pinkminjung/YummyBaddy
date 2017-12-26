@@ -1,0 +1,163 @@
+﻿html, body {
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	background:url(../images/bg_main2.png) repeat-x;
+}
+
+#wrap{
+	width:100%;
+	height:100%;
+	background:url(../images/bg_main.png) repeat-x;
+}
+
+#wrap_02{
+	width:100%;
+	height:100%;
+	background:url(../images/bg_main2.png) repeat-x;
+	opacity:1;
+	transition:1s;
+	-webkit-transition:1s;
+	-moz-transition:1s;
+	-o-transition:1s;
+	-ms-transition:1s;
+}
+
+/* Main Visual */
+#main_visual{
+	position:absolute;
+	width:100%;
+	height:100%;
+	background:url(../images/mainmap1.gif) no-repeat center 180px,url(../images/bg_cloud.png) no-repeat center center,url(../images/bg_light.png) no-repeat center top;
+}
+
+#main_visual_02{
+	position:absolute;
+	width:100%;
+	height:100%;
+	background:url(../images/mainmap2.gif) no-repeat center 180px,url(../images/bg_cloud.png) no-repeat center center,url(../images/bg_light2.png) no-repeat center top;
+	opacity:1; 
+	transition:2s;
+	-webkit-transition:2s;
+	-moz-transition:2s;
+	-o-transition:2s;
+	-ms-transition:2s;
+}
+
+.cloud {
+	position:relative;
+	width:1000px;
+	height:280px;
+	top:120px;
+	left:100px;
+	z-index:200;
+}
+
+/* Menu */
+#main_menu{
+	position:relative;
+	width:700px;
+	height:500px;
+	margin:0 auto;
+	top:345px;
+}
+
+#main_menu .menu_hole_li{
+	position:absolute;
+}
+
+/* 뉴트리아 */
+#main_menu .menu_hole_li .menu_01 {
+	position:relative;
+	top:22px;
+	left:358px;
+}
+
+/* 황소개구리 */
+#main_menu .menu_hole_li .menu_02 {
+	position:relative;
+	top:215px;
+	left:355px;
+}
+
+/* 배스 */
+#main_menu .menu_hole_li .menu_03 {
+	position:relative;
+	top:280px;
+	left:185px;
+}
+
+/* 불가사리 */
+#main_menu .menu_hole_li .menu_04 {
+	position:relative;
+	top:185px;
+	left:-30px;
+}
+
+/* 블루길 */
+#main_menu .menu_hole_li .menu_05 {
+	position:relative;
+	top:250px;
+	left:480px;
+}
+
+.menu_hole {
+	display:block;
+	width:150px;
+	height:160px;
+	text-align:center;
+}
+
+.hole_img {
+	background:url(../images/menu_hole.png) no-repeat;
+}
+
+/* Main Sub Menu */
+.main_sub_menu {
+	position:relative;
+	width:124px;
+	height:57px;
+}
+
+.main_sub_menu .hidden{
+	position:relative;
+	width:auto;
+	height:auto;	
+}
+
+.sub_01 {
+	left:376px;	
+}
+
+.sub_02 {
+	top:197px;
+	left:375px;	
+}
+
+.sub_03 {
+	top:253px;
+	left:205px;	
+}
+
+.sub_04 {
+	top:163px;
+	left:-10px;	
+}
+
+.sub_05 {
+	top:228px;
+	left:500px;	
+}
+
+.hidden li{
+	float:left;
+	width:50%;
+	position:relative;
+	top:-110px;
+}
+
+.hidden a{
+	width:62px;
+	height:60px;
+	display:block;
+}

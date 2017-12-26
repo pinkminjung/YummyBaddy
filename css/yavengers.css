@@ -1,0 +1,100 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	width:1920px;
+	height:1080px;
+	overflow:hidden;
+}
+
+#wrap{
+	position:relative;
+	height:1080px;
+	background:#abbdd9;
+}
+
+h2{
+	position:relative;
+	height:160px;
+	padding:20px;
+	background:#9aafd9;
+	text-align:center;
+	margin:0 auto;
+}
+
+#memberInt{
+	position:relative;
+	margin:120px 70px;
+	width:1800px;
+	height:610px;
+}
+
+#memberInt> div{
+	position:relative;
+	width:590px;
+	height:270px;
+	float:left;
+}
+
+#memberInt #member01{
+	position:relative;
+	background:url(../images/member01.png) no-repeat;
+}
+
+#memberInt #member02{
+	position:relative;
+	background:url(../images/member02.png) no-repeat;
+}
+
+#memberInt #member03{
+	position:relative;
+	background:url(../images/member03.png) no-repeat;
+}
+
+#memberInt #member04{
+	position:relative;
+	background:url(../images/member04.png) no-repeat;
+}
+
+#memberInt #member05{
+	position:relative;
+	background:url(../images/member05.png) no-repeat;
+}
+
+#memberInt #member06{
+	position:relative;
+	background:url(../images/member06.png) no-repeat;
+}
+
+#memberInt .memberT{
+	position:relative;
+	width:300px;
+	height:160px;
+	margin:40px 50px 25px 260px;
+	line-height:20px;
+}
+
+#memberInt .memberT .memberT_title{
+	font-weight:bold;
+	font-size:14px;
+	color:#3666ad;
+	line-height:30px;
+}
+
+#memberInt .memberT .memberT_text{
+	color:rgba(0,0,0,1.00);
+	position:relative;
+}
+
+#memberInt .memberT .memberT_text2{
+	color:rgba(0,0,0,1.00);
+	position:relative;
+	top:-13px;
+}
+
+#memberInt .memberT .memberT_text2 img{
+	height:25px;
+	position:relative;
+	padding-left:5px;
+	top:7px;
+}

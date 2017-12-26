@@ -1,0 +1,107 @@
+#header #logo{
+	position:fixed;
+	display:block;
+	width:120px;
+	top:10px;
+	left:50px;
+	padding:7px;
+	z-index:10;
+}
+
+#header .menu_bar .menu_bar_icon {
+	color:#faf4da;
+}
+
+/* Navigation */
+.cd-nav-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 100%;
+  transform: translateX(100%);
+  transition: transform 0.4s;
+}
+.cd-nav-container.is-visible {
+  transform: translateX(0);
+}
+ 
+main {
+  transition: transform 0.4s;
+}
+main.scale-down {
+  transform: scale(0.9);
+}
+
+.cd-section {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0s 0.4s;
+}
+.cd-section.cd-selected {
+  position: relative;
+  z-index: 2;
+  transform: translateX(0);
+  transition: transform 0.4s 0s;
+}
+
+
+/* 오른쪽 퀵메뉴 */
+#wrap > nav{
+	position:fixed;
+	top:30%;
+	right:20px;
+	z-index:2000;
+}
+#wrap .quick_btn{
+  display: block;
+  position:relative;
+  height: 20px;
+  width: 20px;
+  padding:7px;
+  margin:5px;
+  text-align:center;
+  color:#fff;
+  background: #47beab;
+  border-radius: 50px;
+  border:3px solid #fff;
+  line-height:20px;
+}
+
+#wrap .quick_btn .quick_btn_icon{
+	position:absolute;
+	display:block;
+	color:#fff;
+	top:5px;
+	left:4px;
+}
+
+.sub_quick_tooltip {
+	position:relative;
+	width:100px;
+	height:30px;
+	top:-8px;
+	right:145px;
+	border-radius:4px;
+	border:2px solid #fff;
+	background:#2ebfd5;
+	line-height:30px;
+	font-size:12px;
+}
+
+.arrow_right {
+	position:absolute;
+	width: 0; 
+	height: 0;
+	top:7px;
+	left:100px;
+	border-top: 7px solid transparent;
+	border-bottom: 7px solid transparent;
+	border-left: 7px solid #fff;
+}

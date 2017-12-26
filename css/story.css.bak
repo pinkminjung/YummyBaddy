@@ -1,0 +1,288 @@
+﻿/* 스크롤페이지 설정 */
+section.scrollblock{
+	position:relative;
+	display:block;
+	width:100%;
+	height:1082px;
+}
+
+.scrollblock_container {
+	position:relative;
+	width:100%;
+	height:100%;
+}
+
+.holder{
+	width: 300px; height: 300px;
+	margin-left: -150px; margin-top: -150px;
+}
+
+/* sub 01 동물소개 */
+section#introduce {
+	background:#47c4b2 url(../images/introduce.png) no-repeat center center;
+}
+
+/* skrollr css */
+#info {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(0,0,0,0.5);
+  color: #fff;
+  padding: 20px;
+  z-index: 99;
+}
+/*section {
+  height: 5000px;
+}*/
+
+#slide-1 .bcg {
+  height: 100%;
+  width: 100%;
+}
+#scrollBaby {
+  width: 184px;
+  height: 286px;
+  background: url('../images/scrolling.png') no-repeat top left;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  margin-left: -92px;
+}
+#slide-1 #tree {
+  width: 189px; height: 300px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: -275px 0 0 -190px;
+  z-index:9999;
+}
+#slide-1 .item {position: absolute; top: 0; left: 0;}
+#slide-1 .tree1 {bottom: 426px; left: 100px; top: auto;}
+#slide-1 .tree2 {bottom: 309px; left: 73px; top: auto;}
+#slide-1 .tree3 {bottom: 205px; left: 30px; top: auto;}
+#slide-1 .tree4 {bottom: 101px; left: 14px; top: auto;}
+#slide-1 .trunk {bottom: 87px; left: 167px; top: auto;}
+#slide-1 .pot {bottom: 20px; left: 130px; top: auto;}
+#slide-1 .shadow {bottom: 0; left: 24px; top: auto;}
+
+/* //skrollr css */
+
+/* sub 02 유입경로 */
+section#inflow {
+	background:#3370a2 url(../images/inflow_bg.png);
+}
+
+.inflow_land {
+	width:100%;
+	height:100%;
+	background:url(../images/inflow_korea.png) no-repeat center bottom;
+}
+
+.inflow_boat{
+	width:100%;
+	height:100%;
+	text-align:center;
+}
+.boat_img{
+	position:relative;
+	top:150px;
+}
+
+.inflow_foreign{
+	position:absolute;
+	width:100%;
+	top:0;
+	text-align:center;
+}
+
+.inflow_korea(
+	position:absolute;
+	width:100%;
+	text-align:center;
+)
+
+.foreign_img {
+	position:relative;
+	width:508px;
+	height:245px;
+	margin:0 auto;
+	top:0;	
+}
+
+.korea_img {
+	position:relative;
+	width:467px;
+	height:270px;
+	margin:0 auto;
+	bottom:0;	
+}
+/* sub 03 피해상황 */
+section#damage {
+	background:#d18014 url(../images/damage_patt_bg.png);
+}
+
+.carrot {
+	position:relative;
+	width:100%;
+	height:100%;
+	background: url(../images/damage_carrot_bg.png),url(../images/damage_patt_bg.png);
+}
+
+/* sub 04 그래프 */
+section#graph {
+	background: url(../images/graph_bg.png);
+}
+
+ #chartdiv {
+		position:relative;
+		width		: 65%;
+		height		: 500px;
+		font-size	: 11px;
+		margin : 0 auto;
+		top:220px;
+		background:rgba(119,56,8,0.5);
+}	
+
+.amcharts-graph-graph2 .amcharts-graph-stroke {
+  stroke-dasharray: 4px 5px;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  -webkit-animation: am-moving-dashes 1s linear infinite;
+  animation: am-moving-dashes 1s linear infinite;
+}
+
+@-webkit-keyframes am-moving-dashes {
+  100% {
+	stroke-dashoffset: -28px;
+  }
+}
+@keyframes am-moving-dashes {
+  100% {
+	stroke-dashoffset: -28px;
+  }
+}
+
+/* sub 05 의기양양 */
+section#proud {
+	background:#dcc7bf;
+}
+
+/* sub 06 형벌 */
+section#punish {
+	background:#dcc7bf;
+}
+
+.punish_ruler{
+	position:relative;
+	display:block;
+	width:85%;
+	height:1080px;
+	margin:0 auto;
+	background: url(../images/bg_criminal.png);
+}
+
+/* sub 07 Recipe */
+section#recipe {
+	background:#f39568 url(../images/bg_under_knife.png) repeat-x;
+}
+
+#recipe .kitchen_knife {
+	width:100%;
+	height:100%;
+	position:relative;
+	top:0;
+	background:url(../images/img_cutting_board.png) no-repeat center bottom;
+}
+
+#recipe .knife {
+	position:relative;
+	display:block;
+	margin:0 auto;
+	top:0;
+}
+
+#recipe .recipe_card{
+	position:absolute;
+	display:block;
+	top:40px;
+	left:35%;
+	width:600px;
+	height:444px;
+	background:url(../images/recipe_card_bg.png) no-repeat;
+	padding:125px 60px 60px 60px;
+	display:none;
+}
+
+/* sub 08 레시피 */
+section#plating {
+	background:#f79a6c url(../images/bg_plating.png) repeat-x;
+}
+
+.recipe_plating {
+	position:absolute;
+	width:100%;
+	height:100%;
+	//background:url(../images/img_plating_bottom.png) no-repeat center bottom;
+}
+
+.plating {
+	position:absolute;
+	width:1920px;
+	height:933px;
+	bottom:0;
+}
+
+
+/* 오른쪽 퀵메뉴 */
+#wrap > nav{
+	position:fixed;
+	top:30%;
+	right:20px;
+	z-index:2000;
+}
+#wrap .quick_btn{
+  display: block;
+  position:relative;
+  height: 20px;
+  width: 20px;
+  padding:7px;
+  margin:5px;
+  text-align:center;
+  color:#fff;
+  background: #47beab;
+  border-radius: 50px;
+  border:3px solid #fff;
+  line-height:20px;
+}
+
+#wrap .quick_btn .quick_btn_icon{
+	position:absolute;
+	display:block;
+	color:#fff;
+	top:10px;
+	left:11px;
+}
+
+.sub_quick_tooltip {
+	position:relative;
+	width:100px;
+	height:30px;
+	top:-8px;
+	right:145px;
+	border-radius:4px;
+	border:2px solid #fff;
+	background:#2ebfd5;
+	line-height:30px;
+}
+
+.arrow_right {
+	position:absolute;
+	width: 0; 
+	height: 0;
+	top:7px;
+	left:100px;
+	border-top: 7px solid transparent;
+	border-bottom: 7px solid transparent;
+	border-left: 7px solid #fff;
+}

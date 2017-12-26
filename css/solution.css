@@ -1,0 +1,80 @@
+﻿
+
+@charset "utf-8";
+/* CSS Document */
+
+
+
+/* 폰트설정 */
+
+@font-face{
+font-family:NanumGothic;
+src:url(../fonts/NanumGothic.woff) format('woff');
+}
+
+
+/* 콘텐츠 */
+
+body{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	font-size:1em;
+	background:#158c7e;
+
+}
+
+
+#wrap{
+	width:100%;
+	height:100%;
+	background:#158c7e;
+}
+
+
+h2{
+	position:relative;
+	height:160px;
+	padding:20px;
+	background:#216666;
+	text-align:center;
+	margin:0 auto;
+}
+
+#content{
+	background:url(../images/img_sol_earth.png) no-repeat 0 20px;
+	width:100%;
+	height:1080px;
+}
+
+#slogan{
+	display:block;
+	
+	padding-top:300px;
+	padding-left:130px;
+}
+
+#yavengers_cha{
+	padding-top:29px;
+	padding-left:210px;
+	
+}
+
+
+#content span{
+	
+	font-family:'NanumGothic';
+	letter-spacing:-0.3px;	
+	color:#BFD3E0;
+	line-height:28px;
+	
+	
+	position:absolute;
+	left:1355px;
+	top:360px;
+	font-size:13px;
+}
+
+
+
+

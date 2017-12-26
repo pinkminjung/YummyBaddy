@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link type="text/css" rel="stylesheet" href="css/reset.css"/>
+<link type="text/css" rel="stylesheet" href="css/header_common.css"/>
+<link type="text/css" rel="stylesheet" href="css/yavengers.css"/>
+<link rel="stylesheet" href="css/cd_nav/css/style.css"> <!-- Resource style -->
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="css/cd_nav/js/modernizr.js"></script> <!-- Modernizr -->
+<script>
+	$(document).ready(function() {
+		
+	// 버튼 Hover시 Opacity 낮추기
+		$('.memberGo').hover(function() {
+			$(this).css('opacity',0.5);
+		}, function() {
+			$(this).css('opacity',1);
+		});
+		
+	// Navigation
+		$('.cd-nav li').on('click', function(event){
+			event.preventDefault();
+			var target = $(this),
+				//detect which section user has chosen
+				sectionTarget = target.data('menu');
+			if( !target.hasClass('cd-selected') ) {
+				//if user has selected a section different from the one alredy visible
+				//update the navigation -> assign the .cd-selected class to the selected item
+				target.addClass('cd-selected').siblings('.cd-selected').removeClass('cd-selected');
+				//load the new section
+				loadNewContent(sectionTarget);
+			} else {
+				// otherwise close navigation
+				toggleNav(false);
+			}
+		});
+		function loadNewContent(newSection) {
+			//create a new section element and insert it into the DOM
+			var section = $('<section class="cd-section '+newSection+'"></section>').appendTo($('main'));
+			//load the new content from the proper html file
+			section.load(newSection+'.html .cd-section > *', function(event){
+				//add the .cd-selected to the new section element -> it will cover the old one
+				section.addClass('cd-selected').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+					//close navigation
+					toggleNav(false);
+				});
+				section.prev('.cd-selected').removeClass('cd-selected');
+			});
+		 
+			$('main').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
+				//once the navigation is closed, remove the old section from the DOM
+				section.prev('.cd-section').remove();
+			});
+		 
+			if( $('.no-csstransitions').length > 0 ) {
+				//detect if browser supports transitions
+				toggleNav(false);
+				section.prev('.cd-section').remove();
+			}
+		}
+			});
+</script>
+</head>
+
+<body>
+	<div id="wrap">	 
+        <header id="header">
+            <h1 id="logo"><a href="index.html"><img src="images/logo.png" alt="Yummy Baddy" /></a></h1>
+            <a href="#cd-nav" class="cd-nav-trigger">Menu<span><!-- used to create the menu icon --></span></a> <!-- .cd-nav-trigger -->
+        </header>
+        <!-- Start : visual -->
+            <h2 id="yavengers"><img src="images/member_title.png" alt="야벤저스"/></h2>
+            <div id="memberInt">
+            	<div id="member01">
+                	<p class="memberT"><span class="memberT_title">복족 수염고둥과</span><br/>
+			            <span class="memberT_text">육식성으로 불가사리, 해삼 등의 극피동물을 먹고 산다. 한국에 존재하는 불가사리의 유일한 천적. 한국에 들어온 아무르불가사리를 상대할 유일한 영웅으로 야벤저스의 캡틴으로 스카웃되었다.</span><br/>
+			            <span class="memberT_title">POSITION</span><br/>
+			            <span class="memberT_text2">팀장, 아무르불가사리<a class="seastarGo" href="sub_04.html"><img src="images/memberGo.png" class="memberGo" alt="바로가기"/></a></span>
+			         </p>
+                </div>
+                <div id="member02">
+                	<p class="memberT"><span class="memberT_title">포유류 고양잇과</span><br/>
+<span class="memberT_text">고양이처럼 생겼으나 고양이보다 몸집이 크고 불분명한 반점이 많다. 입을 크게 벌릴 수 있고 턱의 근육이 발달하여 먹이나 다른 물건을 물어뜯는 힘이 매우 세다. 괴물쥐 뉴트리아의 이빨에 버금가는 파괴력의 턱을 가진 파괴의 신. 강력한 힘으로 2인자의 자리까지 올랐다.</span><br/>
+<span class="memberT_title">POSITION</span><br/>
+<span class="memberT_text2">부팀장, 뉴트리아<a class="nutriaGo" href="sub.html"><img src="images/memberGo.png"  class="memberGo"  alt="바로가기"/></a></span></p>
+                </div>
+                <div id="member03">
+                	<p class="memberT"><span class="memberT_title">포유류 족제비과</span><br/>
+<span class="memberT_text">귀여운 외모와 상반된 능력을 가지고 있다. 수영능력과 시각,청각이 발달되어 밤낮 가리지 않고 에도 사냥을 할 수 있다. 한번 표적이 된 동물은 끝까지 잡는 끈기와 훌륭한 사냥능력으로 야벤저스에 스카웃되었다.</span><br/>
+<span class="memberT_title">POSITION</span><br/>
+<span class="memberT_text2">황소개구리<a class="bullfrogGo" href="sub_02.html"><img src="images/memberGo.png" class="memberGo"  alt="바로가기"/></a>  블루길
+	<a class="blueGo" href="sub_02.html"><img src="images/memberGo.png" class="memberGo" alt="바로가기"/></a> 배스
+	<a class="bassGo" href="#"><img src="images/memberGo.png" class="memberGo" alt="바로가기"/></a></span></p>
+                </div>
+                <div id="member04">
+                	<p class="memberT"><span class="memberT_title">조류 왜가리과</span><br/>
+<span class="memberT_text">아무리 큰 황소개구리도 한번에 꿀꺽 삼켜 먹을 수 있는 왜가리는 황소개구리에게 시달리던 토종 생물에게는 이미 유명한 히어로. 여론에 힘입어 야벤저스에서 스카웃했다.</span><br/>
+<span class="memberT_title">POSITION</span><br/>
+<span class="memberT_text2">황소개구리<a class="bullfrogGo" href="#"><img src="images/memberGo.png" class="memberGo" alt="바로가기"/></a></span></p>
+                </div>
+                <div id="member05">
+                	<p class="memberT"><span class="memberT_title">포유류 개과</span><br/>
+<span class="memberT_text">충성심과 복종심이 강하며 감각이 매우 예민하고 용맹스러워서 집도 잘지키지만 사냥에도 적합해 괴물쥐 뉴트리아 사냥을 위해 야벤저스로 스카웃되었다.</span><br/>
+<span class="memberT_title">POSITION</span><br/>
+<span class="memberT_text2">뉴트리아<a class="nutriaGo" href="#"><img src="images/memberGo.png"  class="memberGo"  alt="바로가기"/></a></span></p>
+                </div>
+                <div id="member06">
+                	<p class="memberT"><span class="memberT_title">갑각류 징거미새우과</span><br/>
+<span class="memberT_text">몸집에 비해 상당히 큰 집게발을 갖고 있으며 야행성으로 밤이되면 죽은 물고기나 잠자는 배스와 블루길을 사냥한다.  야벤저스 내에서는 밤의 사냥꾼이라 불린다.</span><br/>
+<span class="memberT_title">POSITION</span><br/>
+<span class="memberT_text2">블루길
+	<a class="blueGo" href="#"><img src="images/memberGo.png" class="memberGo"  alt="바로가기"/></a>   배스
+	<a class="bassGo" href="#"><img src="images/memberGo.png" class="memberGo"  alt="바로가기"/></a></span></p>
+                </div>
+            </div>
+</div>
+            <!-- End : visual -->
+            
+    <!-- Start : cd_nav -->
+	<nav class="cd-nav-container" id="cd-nav">
+		<header>
+			<h3>Yummy Baddy</h3>
+			<a href="#" class="cd-close-nav">Close</a>
+		</header>
+	
+		<ul class="cd-nav">
+			<li data-menu="index">
+				<a href="index.html">
+					<span>
+						<img src="images/cd_nav_icon_01.png" alt="Home" />
+					</span>
+	
+					<em>Home</em>
+				</a>
+			</li>
+			
+			<li data-menu="yavengers">
+				<a href="yavengers.html">
+					<span>
+						<img src="images/cd_nav_icon_02.png" alt="Yavengers" />
+					</span>
+					<em>Yavengers</em>
+				</a>
+			</li>
+	
+			<li data-menu="story_01">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_03.png" alt="Nutria" />
+					</span>
+	
+					<em>Nutria</em>
+				</a>
+			</li>
+	
+			<li data-menu="story_02">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_04.png" alt="Bullfrog" />
+					</span>
+					<em>Bullfrog</em>
+				</a>
+			</li>
+	
+			<li data-menu="story_03">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_05.png" alt="Largemouse Bass" />
+					</span>
+					<em>Largemouse Bass</em>
+				</a>
+			</li>
+			<li data-menu="story_04">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_06.png" alt="North Pacific Seastar" />
+					</span>
+					<em>North Pacific Seastar</em>
+				</a>
+			</li>
+			
+			<li data-menu="story_05">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_07.png" alt="Blue Gill" />
+					</span>
+					<em>Blue Gill</em>
+				</a>
+			</li>
+			
+			<li data-menu="solution">
+				<a href="#">
+					<span>
+						<img src="images/cd_nav_icon_08.png" alt="Solution" />
+					</span>
+					<em>Solution</em>
+				</a>
+			</li>
+		</ul>
+	</nav>
+	<script src="css/cd_nav/js/main.js"></script> <!-- Resource jQuery -->
+	<!-- End : cd_nav -->
+</body>
+</html>

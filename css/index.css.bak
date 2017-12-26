@@ -1,0 +1,99 @@
+html, body {
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	background:url(../images/bg_main2.png) repeat-x;
+}
+
+#wrap{
+	width:100%;
+	height:100%;
+	background:url(../images/bg_main.png) repeat-x;
+}
+
+#wrap_02{
+	width:100%;
+	height:100%;
+	background:url(../images/bg_main2.png) repeat-x;
+	opacity:1;
+	transition:1s;
+}
+
+#header #logo{
+	position:fixed;
+	display:block;
+	width:120px;
+	top:10px;
+	left:50px;
+	padding:7px;
+	z-index:10;
+}
+
+#header .menu_bar .menu_bar_icon {
+	color:#faf4da;
+}
+
+/* Navigation */
+.cd-nav-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 100%;
+  transform: translateX(100%);
+  transition: transform 0.4s;
+}
+.cd-nav-container.is-visible {
+  transform: translateX(0);
+}
+ 
+main {
+  transition: transform 0.4s;
+}
+main.scale-down {
+  transform: scale(0.9);
+}
+
+.cd-section {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0s 0.4s;
+}
+.cd-section.cd-selected {
+  position: relative;
+  z-index: 2;
+  transform: translateX(0);
+  transition: transform 0.4s 0s;
+}
+
+/* Main Visual */
+#main_visual{
+	position:absolute;
+	width:100%;
+	height:100%;
+	background:url(../images/mainmap1.gif) no-repeat center 180px,url(../images/bg_cloud.png) no-repeat center center,url(../images/bg_light.png) no-repeat center top;
+}
+
+#main_visual_02{
+	position:absolute;
+	width:100%;
+	height:100%;
+	background:url(../images/mainmap2.gif) no-repeat center 180px,url(../images/bg_cloud.png) no-repeat center center,url(../images/bg_light2.png) no-repeat center top;
+	opacity:1; 
+	transition:2s;
+}
+
+.cloud {
+	position:relative;
+	width:1000px;
+	height:280px;
+	top:550px;
+	left:100px;
+	z-index:200;
+}

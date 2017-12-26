@@ -1,0 +1,426 @@
+﻿/* 스크롤페이지 설정 */
+section.scrollblock{
+	position:relative;
+	display:block;
+	width:100%;
+	height:1082px;
+}
+
+.scrollblock_container {
+	position:relative;
+	width:100%;
+	height:100%;
+}
+
+.holder{
+	width: 300px; height: 300px;
+	margin-left: -150px; margin-top: -150px;
+}
+
+/* skrollr css 시작 */
+#info {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(0,0,0,0.5);
+  color: #fff;
+  padding: 20px;
+  z-index: 99;
+}
+
+/*section {
+  height: 5000px;
+}*/
+
+#slide-1 .bcg {
+  height: 100%;
+  width: 100%;
+}
+#scrollBaby {
+  width: 184px;
+  height: 286px;
+  background: url('../images/scrolling.png') no-repeat top left;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  margin-left: -92px;
+}
+#slide-1 #baddy {
+  width: 400px; height: 400px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: 0 0 0 -125px;
+  z-index:9999;
+}
+
+#slide-1 .item {position: absolute; top: 0; left: 0;}
+#slide-1 .baddystory {bottom: 426px; left: 0; top: auto;}
+#slide-1 .baddyrecipe {left: -80px; top: auto;}
+#slide-1 .punish {left: -80px; top: auto;}
+#slide-1 .proud {left:-80px; top: auto;}
+#slide-1 .hat {left:30px; top:auto; z-index:99999;}
+#slide-1 .introduce {bottom: 220px; left: -75px; top: auto;}
+#slide-1 .damage {bottom: 0; left: -80px; top: auto;}
+
+/* //skrollr css 끝*/
+
+/* sub 01 동물소개 */
+section#introduce {
+	background:#008e95;
+}
+
+#introduce .scrollblock_container {
+	background: url(../images/img_wave.png) no-repeat center center, url(../images/water/bg_cliffland.png) no-repeat center top;
+}
+
+
+<!--폰트설정-->
+
+@font-face{
+font-family:NanumGothic;
+src:url(../fonts/NanumGothic.woff) format('woff');
+}
+
+.txt{
+	font-family:'NanumGothic';
+	font-weight:400;
+	font-size:13px;
+	letter-spacing:-0.3px;	
+	color:rgba(255,255,255,1.00);
+	line-height:26px;
+	text-align:center;
+	
+	position:absolute;
+	left:38%;
+	z-index:10;
+	
+	padding:20px;
+	
+	background:rgba(55,55,55,0.6);
+	width:440px;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-o-border-radius:10px;
+	-ms-border-radius:10px;
+	-webkit-border-radius:10px;
+	}
+	
+	
+#txt1{
+	top:300px;}	
+	
+#txt2{
+	top:60px;
+}
+#txt3{
+	top:30px;
+}
+
+/* sub 02 유입경로 */
+section#inflow {
+	background:#01afb3 url(../images/bg_damagedsea.png) repeat-x;
+}
+
+#inflow .scrollblock_container{
+	background: url(../images/water/bg_cliff2-1.png) no-repeat 0 bottom;
+}
+
+.inflow_land {
+	width:100%;
+	height:100%;
+	background:url(../images/img_wave.png) no-repeat center center, url(../images/img_korea.png) no-repeat center bottom;
+}
+
+.inflow_boat{
+	width:100%;
+	height:100%;
+	text-align:center;
+}
+.boat_img{
+	position:relative;
+	top:150px;
+	z-index:100;
+}
+
+.inflow_foreign{
+	position:absolute;
+	width:100%;
+	top:-98px;
+	text-align:center;
+}
+
+.inflow_korea(
+	position:absolute;
+	width:100%;
+	text-align:center;
+)
+
+.foreign_img {
+	position:relative;
+	width:508px;
+	height:245px;
+	margin:0 auto;
+	top:0;	
+}
+
+.korea_img {
+	position:relative;
+	width:467px;
+	height:270px;
+	margin:0 auto;
+	bottom:0;	
+}
+/* sub 03 피해상황 */
+section#damage {
+	background:#01afb3;
+}
+
+#damage .scrollblock_container{
+	background:url(../images/water/bg_cliff2-2.png) no-repeat 0 -4px;
+}
+
+.wave {
+	position:relative;
+	width:100%;
+	height:100%;
+	background: url(../images/img_wave.png) no-repeat center center;
+}
+
+.shellfish {
+	position:relative;
+	width:223px;
+	height:169px;
+	margin:0 auto;
+	top:40px;
+	z-index:100;
+}
+
+/* sub 04 그래프 */
+section#graph {
+	background:#166d67;
+}
+
+#graph .scrollblock_container{
+	background:url(../images/water/bg_graph_stream.png) no-repeat 0 bottom;
+}
+
+#graph .connect_wave{
+	width:100%;
+	position:relative;
+	top:-45px;
+}
+
+#graph .chart_title {
+	width:400px;
+	height:60px;
+	margin:0 auto;
+	background:rgba(0,0,0,0.2);
+	text-align:center;
+	font:2em/60px "NanumGothic";
+	color:#fff;
+	border-radius:10px;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	-o-border-radius:10px;
+	-ms-border-radius:10px;
+}
+
+ #chartdiv {
+		position:relative;
+		width		: 50%;
+		height		: 500px;
+		font-size	: 11px;
+		margin : 0 auto;
+		top:120px;
+		background:rgba(22,109,103,0.5);
+}	
+
+.amcharts-graph-graph2 .amcharts-graph-stroke {
+	  stroke-dasharray: 4px 5px;
+	  stroke-linejoin: round;
+	  stroke-linecap: round;
+	  -webkit-animation: am-moving-dashes 1s linear infinite;
+	  animation: am-moving-dashes 1s linear infinite;
+	}
+
+	@-webkit-keyframes am-moving-dashes {
+	  100% {
+		stroke-dashoffset: -28px;
+	  }
+	}
+	@keyframes am-moving-dashes {
+	  100% {
+		stroke-dashoffset: -28px;
+	  }
+	}
+
+/* sub 05 의기양양 */
+section#proud {
+	background:#dcc7bf;
+}
+
+#proud .connect_block {
+	width:100%;
+	position:relative;
+	top:-140px;
+}
+
+#proud .proud_ruler{
+	position:relative;
+	display:block;
+	width:85%;
+	height:100%;
+	margin:0 auto;
+	margin-bottom:350px;
+	background: url(../images/bg_proud.png);
+}
+
+#proud .baddy_desc{
+	position:absolute;
+	top:68px;
+	right:80px;
+	width:450px;
+	padding:5px;
+	font-size:12px;
+	background:rgba(0,0,0,0.5);
+	border-radius:10px;
+}
+
+#proud .baddy_desc_table {
+	width:95%;
+	margin:10px auto;
+}
+
+#proud .baddy_desc_table tr td{
+	height:40px;
+	color:#fff;
+	padding:5px;
+	line-height:30px;
+}
+
+.baddy_desc_table .title {
+	text-align:center;
+	font-size:16px;
+}
+
+.baddy_desc_table .subject {
+	color:#facd89;
+}
+
+
+/* sub 06 형벌 */
+section#punish {
+	background:#dcc7bf;
+}
+
+.punish_ruler{
+	position:relative;
+	display:block;
+	width:85%;
+	height:1080px;
+	margin:0 auto;
+	background: url(../images/bg_criminal.png);
+}
+
+/* sub 07 Recipe */
+section#recipe {
+	background:#e6ccbf url(../images/bg_under_knife.png) repeat-x;
+}
+
+#recipe .kitchen_knife {
+	width:100%;
+	height:90%;
+	position:relative;
+	background:url(../images/img_cutting_board.png) no-repeat center bottom;
+}
+
+#recipe .knife {
+	position:relative;
+	display:block;
+	margin:0 auto;
+	top:0;
+}
+
+#recipe .recipe_card{
+	position:relative;
+	display:none;
+	top:20px;
+	margin:0 auto;
+	width:600px;
+	height:450px;
+	background:url(../images/recipe_card_bg2.png) no-repeat;
+	color:#63554a;
+	font-size:12px;
+}
+
+#recipe .recipe_table{
+	display:table;
+	padding:55px 10px 10px 20px;
+	width:100%;
+}
+
+#recipe .recipe_table td {
+	height:30px;
+	line-height:30px;
+}
+
+#recipe .scroll_icon a{
+	position:relative;
+	display:block;
+	bottom:20px;
+	width:100%;
+	height:40px;
+	margin:0 auto;
+	padding-right:30px;
+	text-align:center;
+	font:bold 2em/40px "NanumGothic";
+	z-index:10000;
+}
+
+#recipe .recipe_list_title {
+	font:bold 1em "NanumGothic";
+	color:#7dc0bd;
+}
+
+#recipe .recipe_title {
+	text-align:center;
+	color:#eb6100;
+	font:bold 14px "NanumGothic";
+}
+
+/* sub 08 레시피 */
+section#plating {
+	background: #e6ccbf;
+}
+
+#plating .scrollblock_container {
+	background : url(../images/bg_plating.png) repeat-x;
+
+}
+
+.recipe_plating {
+	position:relative;
+	width:100%;
+	height:100%;
+	text-align:center;
+	/*background:url(../images/img_plating.png) no-repeat center bottom;*/
+}
+
+.recipe_plating .plating{
+	position:absolute;
+	display:block;
+	bottom:0;
+	left:10%;
+	width:1512px;
+	height:1176px;
+	margin:0 auto;
+	padding-left:70px;
+}
+
+.recipe_plating .enjoy {
+	position:absolute;
+	text-align:center;
+	bottom:110px;
+	left:37%;
+}
