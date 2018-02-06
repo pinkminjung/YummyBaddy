@@ -1,0 +1,63 @@
+<!Doctype html>
+<script
+
+  src="http://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script>
+    function makeSub(obj) {
+      var id = $(obj).attr('cherry');
+      var val = $(obj).val();
+
+      var target = $('#c_' + id);
+
+      target.text('');
+
+      for (var i=0; i<parseInt(val); i++) {
+        target.append('<li><input type="text"></li>');
+      }
+      console.log(id+'/'+val+'/'+$(target).html());
+    }
+  </script>
+
+
+<input type="number" cherry="0" onChange="makeSub(this)">
+<input type="number" cherry="1" onChange="makeSub(this)">
+<input type="number" cherry="2" onChange="makeSub(this)">
+<input type="number" cherry="3" onChange="makeSub(this)">
+<input type="number" cherry="4" onChange="makeSub(this)">
+<input type="submit" value="확인">
+<ul>
+  <li>대분류
+    <ul id="c_0">
+      <li><input type="text"></li>
+    </ul>
+  </li>
+</ul>
+<ul>
+  <li>대분류
+    <ul id="c_1">
+      <li><input type="text"></li>
+    </ul>
+  </li>
+</ul>
+<ul>
+  <li>대분류
+    <ul id="c_2">
+      <li><input type="text"></li>
+    </ul>
+  </li>
+</ul>
+<ul>
+  <li>대분류
+    <ul id="c_3">
+      <li><input type="text"></li>
+    </ul>
+  </li>
+</ul><ul>
+  <li>대분류
+    <ul id="c_4">
+      <li><input type="text"></li>
+    </ul>
+  </li>
+</ul>
